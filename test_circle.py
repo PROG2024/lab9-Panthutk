@@ -22,11 +22,11 @@ class TestCircle(unittest.TestCase):
         self.c1 = Circle(2)
 
     def test_add_area_two_positive_circles_radius(self):
-        """Test add_area with two circle having positive radius."""
+        """Test add_area with two circles having positive radius."""
         c2 = Circle(3)
         c3 = self.c1.add_area(c2)
 
-        expected_radius = 3
+        expected_radius = 2
         expected_area = math.pi * expected_radius ** 2
         # Check that the radius and area of the new circle are as expected.
         self.assertAlmostEqual(c3.get_radius(), expected_radius)
@@ -35,14 +35,14 @@ class TestCircle(unittest.TestCase):
     def test_add_area_one_circle_radius_is_zero(self):
         """Test add_area with one circle having radius 0."""
         c2 = Circle(0)
-        self.assertEqual(c3.get_radius(), 2)
-        # Check that the radius is 2.
         c3 = self.c1.add_area(c2)
+        # Check that the radius is 2.
+        self.assertEqual(c3.get_radius(), 2)
         # Check that the area is as expected.
         self.assertEqual(c3.get_area(), math.pi * self.c1.get_radius() ** 2)
 
     def test_constructor_negative_radius(self):
-        """Test that constructor raises exception for negative radius."""
+        """Test that the constructor raises an exception for negative radius."""
         with self.assertRaises(ValueError):
             c = Circle(-1)
 
