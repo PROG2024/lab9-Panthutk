@@ -45,3 +45,7 @@ class TestCircle(unittest.TestCase):
         """Test that constructor raises exception for negative radius."""
         with self.assertRaises(ValueError):
             c = Circle(-1)
+
+
+if __name__ == '__main__':
+    unittest.main()
