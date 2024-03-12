@@ -26,8 +26,11 @@ class TestCircle(unittest.TestCase):
         c2 = Circle(3)
         c3 = self.c1.add_area(c2)
 
-        expected_radius = 2
-        expected_area = math.pi * expected_radius ** 2
+        # The radius of the new circle should be the hypotenuse of a right
+        expected_radius = math.sqrt(
+            self.c1.get_radius()**2 + c2.get_radius()**2)
+        expected_area = math.pi * expected_radius**2
+
         # Check that the radius and area of the new circle are as expected.
         self.assertAlmostEqual(c3.get_radius(), expected_radius)
         self.assertAlmostEqual(c3.get_area(), expected_area)
