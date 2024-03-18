@@ -7,3 +7,5 @@
 
    You can use pytest or unittest.
 """
+import unittest
+from counter import Counter

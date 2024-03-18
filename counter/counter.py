@@ -9,14 +9,34 @@
       You may not have a __new__ depending on how you implement the singleton.
 """
 
+
 class Counter:
+    _instance = None
+
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        return cls._instance
 
     def __init__(self):
         self.__count = 0
 
-
     def __str__(self):
         return f"{self.__count}"
 
-    #TODO write count property
-    #TODO write increment method
+    @property
+    def count(self):
+        return self.__count
+
+    def increment(self):
+        self.__count += 1
+        return self.__count
+
+
+if __name__ == "__main__":
+    counter = Counter()  # start with 0
+    print(counter.count)  # 0
+    counter.increment()  # add 1
+    print(counter.count)  # 1
+    counter.increment()  # add 1
+    print(counter.count)  # 2
